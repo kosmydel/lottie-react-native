@@ -1,6 +1,16 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View, ViewProps } from "react-native";
+import type { LottieViewProps } from '../types';
 
-export function LottieView() {
-    return <Text>LottieView :O</Text>;
+type Props = LottieViewProps & { containerProps?: ViewProps };
+
+function LottieView(props: Props) {
+    return (
+        <View>
+            <Text>LottieView placeholder :O</Text>
+            <Text>isAutoplay: {props.autoPlay}</Text>
+        </View>
+    );
 }
+
+export { LottieView };

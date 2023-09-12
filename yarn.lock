@@ -3995,6 +3995,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native/metro-config@npm:0.72.9":
+  version: 0.72.9
+  resolution: "@react-native/metro-config@npm:0.72.9"
+  dependencies:
+    "@react-native/js-polyfills": ^0.72.1
+    metro-config: 0.76.7
+    metro-react-native-babel-transformer: 0.76.7
+    metro-runtime: 0.76.7
+  checksum: c20e88127f04253ae519655bb2f436593f92615f8b678e52b448c51c1f0617d085b554532e48c09db293c6565ce4a13e1237d648c8739825ce9fcf20f862e963
+  languageName: node
+  linkType: hard
+
 "@react-native/metro-config@npm:^0.72.9":
   version: 0.72.11
   resolution: "@react-native/metro-config@npm:0.72.11"
@@ -19066,7 +19078,7 @@ __metadata:
     "@react-native-community/slider": ^4.4.2
     "@react-native-picker/picker": ^2.4.10
     "@react-native/eslint-config": ^0.72.2
-    "@react-native/metro-config": ^0.72.9
+    "@react-native/metro-config": 0.72.9
     "@tsconfig/react-native": ^3.0.0
     "@types/jest": ^29.5.2
     "@types/react": ^18.2.12
