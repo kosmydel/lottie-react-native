@@ -7,6 +7,8 @@ const appDirectory = path.resolve(__dirname);
 const root = path.resolve(__dirname, '../../packages/core/');
 const {presets} = require(`${appDirectory}/babel.config.js`);
 
+const {resolver} = require('./metro.config.js');
+
 const compileNodeModules = [
   // Add every react-native package that needs compiling
   // 'react-native-gesture-handler',
@@ -32,15 +34,6 @@ const babelLoaderConfiguration = {
   },
 };
 
-const svgLoaderConfiguration = {
-  test: /\.svg$/,
-  use: [
-    {
-      loader: '@svgr/webpack',
-    },
-  ],
-};
-
 const imageLoaderConfiguration = {
   test: /\.(gif|jpe?g|png)$/,
   use: {
@@ -52,25 +45,43 @@ const imageLoaderConfiguration = {
 };
 
 module.exports = {
+  mode: 'development',
   entry: {
     app: path.join(__dirname, 'index.web.js'),
   },
+  stats: {warnings: false},
   output: {
     path: path.resolve(appDirectory, 'dist'),
     publicPath: '/',
     filename: 'rnw_blogpost.bundle.js',
   },
   resolve: {
-    extensions: ['.web.tsx', '.web.ts', '.tsx', '.ts', '.web.js', '.js'],
+    extensions: [
+      '.web.tsx',
+      '.web.ts',
+      '.tsx',
+      '.ts',
+      '.web.js',
+      '.js',
+      '.lottie',
+      '.json',
+    ],
     alias: {
+      ...resolver.extraNodeModules,
       'react-native$': 'react-native-web',
     },
+    symlinks: false,
+    modules: [root, 'node_modules'],
   },
   module: {
     rules: [
       babelLoaderConfiguration,
       imageLoaderConfiguration,
-      svgLoaderConfiguration,
+      // {
+      //   test: /\.(js|jsx|ts|tsx)$/,
+      //   include: root,
+      //   use: 'babel-loader',
+      // },
     ],
   },
   plugins: [
