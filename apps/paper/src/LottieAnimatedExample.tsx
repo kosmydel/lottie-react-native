@@ -16,12 +16,6 @@ const ANIMATIONS = [
 const LottieAnimatedExample = () => {
   const [animationIndex, setAnimationIndex] = useState(0);
 
-  const file = ANIMATIONS[0];
-  console.log('animations', ANIMATIONS);
-  console.log('file', typeof file);
-  // print out the file contents
-  console.log('file', file);
-
   const nextAnimation = () => {
     setAnimationIndex((animationIndex + 1) % ANIMATIONS.length);
   };

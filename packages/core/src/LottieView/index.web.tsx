@@ -9,12 +9,10 @@ type Props = LottieViewProps & { containerProps?: ViewProps };
 function LottieView(props: Props) {
   const { source } = props;
   let isLottie = false;
-  let filename = '';
   if (typeof source === 'string') {
     if (source.includes('.lottie')) {
       isLottie = true;
     }
-    filename = source;
   }
 
   if (isLottie) {
