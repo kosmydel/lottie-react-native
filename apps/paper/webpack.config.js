@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const appDirectory = path.resolve(__dirname);
 const root = path.resolve(__dirname, '../../packages/core/');
+console.log('root', root);
 const {presets} = require(`${appDirectory}/babel.config.js`);
 
 const {resolver} = require('./metro.config.js');
@@ -12,6 +13,7 @@ const {resolver} = require('./metro.config.js');
 const compileNodeModules = [
   // Add every react-native package that needs compiling
   // 'react-native-gesture-handler',
+  'lottie-react-native',
 ].map(moduleName => path.resolve(appDirectory, `node_modules/${moduleName}`));
 
 const babelLoaderConfiguration = {
@@ -22,6 +24,7 @@ const babelLoaderConfiguration = {
     // path.resolve(__dirname, 'App.web.tsx'), // Change this to your main App file
     path.resolve(__dirname, 'src'),
     root,
+    path.resolve(root, 'node_modules'),
     ...compileNodeModules,
   ],
   use: {
@@ -34,20 +37,10 @@ const babelLoaderConfiguration = {
   },
 };
 
-const imageLoaderConfiguration = {
-  test: /\.(gif|jpe?g|png)$/,
-  use: {
-    loader: 'url-loader',
-    options: {
-      name: '[name].[ext]',
-    },
-  },
-};
-
 module.exports = {
   mode: 'development',
   entry: {
-    app: path.join(__dirname, 'index.web.js'),
+    app: './index.web.js',
   },
   stats: {warnings: false},
   output: {
@@ -71,18 +64,10 @@ module.exports = {
       'react-native$': 'react-native-web',
     },
     symlinks: false,
-    modules: [root, 'node_modules'],
+    modules: ['node_modules', 'src'],
   },
   module: {
-    rules: [
-      babelLoaderConfiguration,
-      imageLoaderConfiguration,
-      // {
-      //   test: /\.(js|jsx|ts|tsx)$/,
-      //   include: root,
-      //   use: 'babel-loader',
-      // },
-    ],
+    rules: [babelLoaderConfiguration],
   },
   plugins: [
     new HtmlWebpackPlugin({
