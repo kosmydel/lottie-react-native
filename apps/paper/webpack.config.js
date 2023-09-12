@@ -24,7 +24,7 @@ const babelLoaderConfiguration = {
     path.resolve(__dirname, 'index.web.js'), // Entry to your application
     // path.resolve(__dirname, 'App.web.tsx'), // Change this to your main App file
     path.resolve(__dirname, 'src'),
-    path.resolve(__dirname, 'node_modules/lottie-react-native'),
+    // path.resolve(__dirname, 'node_modules/lottie-react-native'),
     root,
     ...compileNodeModules,
   ],
@@ -68,17 +68,17 @@ module.exports = {
     modules: ['node_modules', 'src'],
   },
   module: {
-    rules: [babelLoaderConfiguration],
+    rules: [
+      babelLoaderConfiguration,
+      {
+        test: /\.lottie$/,
+        type: 'asset/resource',
+      },
+    ],
   },
   watch: true,
   watchOptions: {
     followSymlinks: true,
-  },
-  snapshot: {
-    managedPaths: [
-      nodeModulesPath,
-      `!${path.resolve(nodeModulesPath, 'lottie-react-native')}`,
-    ],
   },
   plugins: [
     new HtmlWebpackPlugin({

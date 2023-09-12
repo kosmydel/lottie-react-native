@@ -2017,6 +2017,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dotlottie/react-player@npm:^1.4.6":
+  version: 1.4.6
+  resolution: "@dotlottie/react-player@npm:1.4.6"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 707f1d31eb93be6c83fd4783cf2e6978342397ba99715adfd55a6157aa9288c7c2f43a5f02b1951e5c857e7ae7e932b4d326ec4ccd188c419a1a10381afa9936
+  languageName: node
+  linkType: hard
+
 "@eslint-community/eslint-utils@npm:^4.2.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
@@ -15303,6 +15312,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "lottie-react-native@workspace:packages/core"
   dependencies:
+    "@dotlottie/react-player": ^1.4.6
     "@lottiefiles/react-lottie-player": ^3.5.3
     "@react-native-community/eslint-config": ^3.1.0
     "@release-it/conventional-changelog": ^5.1.1

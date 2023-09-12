@@ -99,6 +99,8 @@ export class LottieView extends React.PureComponent<Props, {}> {
     | undefined {
     const { source } = this.props;
 
+    console.log('source', source);
+
     if (typeof source === 'string') {
       return { sourceName: source };
     }
