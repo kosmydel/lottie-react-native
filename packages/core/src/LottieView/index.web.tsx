@@ -1,15 +1,17 @@
 import React from "react";
-import { Text, View, ViewProps } from "react-native";
+import { ViewProps } from "react-native";
 import type { LottieViewProps } from '../types';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 type Props = LottieViewProps & { containerProps?: ViewProps };
 
 function LottieView(props: Props) {
     return (
-        <View>
-            <Text>LottieView placeholder :O</Text>
-            <Text>isAutoplay: {props.autoPlay}</Text>
-        </View>
+        <Player
+            autoplay={props.autoPlay}
+            loop={props.loop}
+            src={props.source}
+            />
     );
 }
 
