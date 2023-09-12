@@ -13,7 +13,7 @@ const {resolver} = require('./metro.config.js');
 const compileNodeModules = [
   // Add every react-native package that needs compiling
   // 'react-native-gesture-handler',
-  'lottie-react-native',
+  // 'lottie-react-native',
 ].map(moduleName => path.resolve(appDirectory, `node_modules/${moduleName}`));
 
 const babelLoaderConfiguration = {
@@ -23,8 +23,8 @@ const babelLoaderConfiguration = {
     path.resolve(__dirname, 'index.web.js'), // Entry to your application
     // path.resolve(__dirname, 'App.web.tsx'), // Change this to your main App file
     path.resolve(__dirname, 'src'),
+    path.resolve(__dirname, 'node_modules/lottie-react-native'),
     root,
-    path.resolve(root, 'node_modules'),
     ...compileNodeModules,
   ],
   use: {
