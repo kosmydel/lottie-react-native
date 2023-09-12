@@ -9,6 +9,7 @@ console.log('root', root);
 const {presets} = require(`${appDirectory}/babel.config.js`);
 
 const {resolver} = require('./metro.config.js');
+const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 
 const compileNodeModules = [
   // Add every react-native package that needs compiling
@@ -68,6 +69,16 @@ module.exports = {
   },
   module: {
     rules: [babelLoaderConfiguration],
+  },
+  watch: true,
+  watchOptions: {
+    followSymlinks: true,
+  },
+  snapshot: {
+    managedPaths: [
+      nodeModulesPath,
+      `!${path.resolve(nodeModulesPath, 'lottie-react-native')}`,
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
