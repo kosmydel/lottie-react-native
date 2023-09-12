@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import { TestView } from 'lottie-react-native';
+import TestView from 'lottie-react-native';
 
 const LottieAnimatedExample = () => {
 

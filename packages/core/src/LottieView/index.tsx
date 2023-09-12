@@ -6,11 +6,11 @@ import {
   processColor,
 } from 'react-native';
 
-import type { LottieViewProps } from './LottieView.types';
+import type { LottieViewProps } from './types';
 
 import NativeLottieAnimationView, {
   Commands,
-} from './specs/LottieAnimationViewNativeComponent';
+} from '../specs/LottieAnimationViewNativeComponent';
 
 type Props = LottieViewProps & { containerProps?: ViewProps };
 
