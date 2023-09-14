@@ -24,22 +24,35 @@ function LottieView(props: Props) {
     }
   }
 
+  const handleEvent = (event) => {
+    if (event === 'error') {
+      props.onAnimationFailure?.('error');
+    }
+    if (event === 'complete') {
+      props.onAnimationFinish?.(false);
+    }
+    if (event === 'stop') {
+      props.onAnimationFinish?.(true);
+    }
+  };
+
   if (isLottie) {
     return (
       <DotLottiePlayer
         autoplay={props.autoPlay}
-        loop={props.loop}
         // @ts-ignore
         src={realSource}
-        onEvent={(event) => {
-          console.log('DotLottie', event);
-        }}
+        onEvent={handleEvent}
         {...otherProps}
       />
     );
   }
   return (
-    <Player autoplay={props.autoPlay} src={source} {...otherProps} />
+    <Player
+      onEvent={handleEvent}
+      autoplay={props.autoPlay}
+      src={source}
+      {...otherProps} />
   );
 }
 
