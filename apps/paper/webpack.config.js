@@ -8,11 +8,16 @@ const appDirectory = path.resolve(__dirname);
 const {presets} = require(`${appDirectory}/babel.config.js`);
 const {resolver} = require('./metro.config.js');
 
+const compileNodeModules = ['react-native-dropdown-picker', 'react-native'].map(
+  moduleName => path.resolve(appDirectory, `node_modules/${moduleName}`),
+);
+
 const babelLoaderConfiguration = {
   test: /\.js$|tsx?$/,
   include: [
     path.resolve(__dirname, 'index.web.js'),
     path.resolve(__dirname, 'src'),
+    ...compileNodeModules,
   ],
   use: {
     loader: 'babel-loader',
@@ -48,7 +53,7 @@ module.exports = {
     ],
     alias: {
       ...resolver.extraNodeModules,
-      'react-native$': 'react-native-web',
+      'react-native': 'react-native-web',
     },
     symlinks: false,
     modules: ['node_modules', 'src'],

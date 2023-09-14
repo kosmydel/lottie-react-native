@@ -9,19 +9,29 @@ type Props = LottieViewProps & { containerProps?: ViewProps };
 function LottieView(props: Props) {
   const { source } = props;
   let isLottie = false;
+  let realSource = props.source;
   if (typeof source === 'string') {
     if (source.includes('.lottie')) {
       isLottie = true;
     }
   }
 
+  if (typeof source === 'object' && (source as any).uri) {
+    if ((source as any).uri.includes('.lottie')) {
+      isLottie = true;
+      realSource = (source as any).uri;
+    }
+  }
+
+
+  console.log('isLottie', isLottie, source, 'source')
   if (isLottie) {
     return (
       <DotLottiePlayer
         autoplay={props.autoPlay}
         loop={props.loop}
         // @ts-ignore
-        src={props.source}
+        src={realSource}
         onEvent={(event) => {
           console.log('DotLottie', event);
         }}
@@ -29,7 +39,7 @@ function LottieView(props: Props) {
     );
   }
   return (
-    <Player autoplay={props.autoPlay} loop={props.loop} src={props.source} />
+    <Player autoplay={props.autoPlay} loop={props.loop} src={source} />
   );
 }
 
