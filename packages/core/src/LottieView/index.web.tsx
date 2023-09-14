@@ -7,6 +7,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 type Props = LottieViewProps & { containerProps?: ViewProps };
 
 function LottieView(props: Props) {
+  const { style, autoPlay, ...otherProps } = props;
   const { source } = props;
   let isLottie = false;
   let realSource = props.source;
@@ -23,8 +24,6 @@ function LottieView(props: Props) {
     }
   }
 
-
-  console.log('isLottie', isLottie, source, 'source')
   if (isLottie) {
     return (
       <DotLottiePlayer
@@ -35,11 +34,12 @@ function LottieView(props: Props) {
         onEvent={(event) => {
           console.log('DotLottie', event);
         }}
+        {...otherProps}
       />
     );
   }
   return (
-    <Player autoplay={props.autoPlay} loop={props.loop} src={source} />
+    <Player autoplay={props.autoPlay} src={source} {...otherProps} />
   );
 }
 
