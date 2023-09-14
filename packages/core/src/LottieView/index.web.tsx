@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { ViewProps } from 'react-native';
 import type { LottieViewProps } from '../types';
 import { DotLottiePlayer } from '@dotlottie/react-player';
@@ -6,7 +6,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 
 type Props = LottieViewProps & { containerProps?: ViewProps };
 
-function LottieView(props: Props) {
+const LottieView = forwardRef((props: Props, ref: any) => {
   const { style, autoPlay, ...otherProps } = props;
   const { source } = props;
   let isLottie = false;
@@ -43,6 +43,7 @@ function LottieView(props: Props) {
         // @ts-ignore
         src={realSource}
         onEvent={handleEvent}
+        lottieRef={ref}
         {...otherProps}
       />
     );
@@ -52,8 +53,9 @@ function LottieView(props: Props) {
       onEvent={handleEvent}
       autoplay={props.autoPlay}
       src={source}
+      ref={ref}
       {...otherProps} />
   );
-}
+});
 
 export { LottieView };
