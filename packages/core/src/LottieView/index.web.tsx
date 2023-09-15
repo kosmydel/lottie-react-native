@@ -3,26 +3,16 @@ import { ViewProps } from 'react-native';
 import type { LottieViewProps } from '../types';
 import { DotLottiePlayer } from '@dotlottie/react-player';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { parsePossibleSources } from './utils';
 
 type Props = LottieViewProps & { containerProps?: ViewProps };
 
 const LottieView = forwardRef((props: Props, ref: any) => {
-  const { style, autoPlay, ...otherProps } = props;
   const { source } = props;
-  let isLottie = false;
-  let realSource = props.source;
-  if (typeof source === 'string') {
-    if (source.includes('.lottie')) {
-      isLottie = true;
-    }
-  }
 
-  if (typeof source === 'object' && (source as any).uri) {
-    if ((source as any).uri.includes('.lottie')) {
-      isLottie = true;
-      realSource = (source as any).uri;
-    }
-  }
+  const sources = parsePossibleSources(source);
+  const isLottie = sources.sourceName?.includes('.lottie') || !!sources.sourceDotLottieURI;
+  const lottieSource = sources.sourceDotLottieURI || sources.sourceName;
 
   const handleEvent = (event) => {
     if (event === 'error') {
@@ -39,22 +29,24 @@ const LottieView = forwardRef((props: Props, ref: any) => {
   if (isLottie) {
     return (
       <DotLottiePlayer
-        autoplay={props.autoPlay}
-        // @ts-ignore
-        src={realSource}
-        onEvent={handleEvent}
         lottieRef={ref}
-        {...otherProps}
+        src={lottieSource}
+        onEvent={handleEvent}
+        autoplay={props.autoPlay}
+        speed={props.speed}
+        loop={props.loop}
       />
     );
   }
   return (
     <Player
+      ref={ref}
+      src={source}
       onEvent={handleEvent}
       autoplay={props.autoPlay}
-      src={source}
-      ref={ref}
-      {...otherProps} />
+      speed={props.speed}
+      loop={props.loop}
+    />
   );
 });
 
