@@ -11,7 +11,7 @@
     "fabric:ios": "yarn workspace fabric-example ios",
     "paper:android": "yarn workspace paper-example android",
     "paper:ios": "yarn workspace paper-example ios",
-    "paper:web": "yarn workspace paper-example start-webpack",
+    "paper:web": "yarn workspace paper-example web",
     "lint:swift": "yarn workspace lottie-react-native lint:swift",
     "docs:clean": "rimraf _book",
     "docs:prepare": "gitbook install",
@@ -30,7 +30,6 @@
     "./apps/*",
     "./packages/*"
   ],
-  "packageManager": "yarn@3.2.3",
   "dependencies": {
     "react": "^18.2.0",
     "react-native": "^0.72.4"

@@ -2018,11 +2018,11 @@ __metadata:
   linkType: hard
 
 "@dotlottie/react-player@npm:^1.4.6":
-  version: 1.4.6
-  resolution: "@dotlottie/react-player@npm:1.4.6"
+  version: 1.5.0
+  resolution: "@dotlottie/react-player@npm:1.5.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 707f1d31eb93be6c83fd4783cf2e6978342397ba99715adfd55a6157aa9288c7c2f43a5f02b1951e5c857e7ae7e932b4d326ec4ccd188c419a1a10381afa9936
+  checksum: 153a0ac9f282f2604557cf1d541415c2d24f3926650d29fc9ccad02135c40e3eb7eec9b9af3bb0e48b130be337a4f35855c446efca0fe05e8f9aa24d3a9cbb09
   languageName: node
   linkType: hard
 
