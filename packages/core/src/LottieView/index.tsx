@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  NativeSyntheticEvent,
-  ViewProps,
-  processColor,
-} from 'react-native';
+import { NativeSyntheticEvent, ViewProps, processColor } from 'react-native';
 
 import { parsePossibleSources } from './utils';
 
