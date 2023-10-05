@@ -1,4 +1,4 @@
-import {AppRegistry} from 'react-native';
-import LottieAnimatedExample from './src/LottieAnimatedExample';
+import {registerRootComponent} from 'expo';
+import App from './src/LottieAnimatedExample';
 
-AppRegistry.registerComponent('example', () => LottieAnimatedExample);
+registerRootComponent(App);

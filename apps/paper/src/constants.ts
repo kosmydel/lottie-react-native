@@ -28,9 +28,6 @@ export const EXAMPLES = [
   makeExample('Lottie Walkthrough', () =>
     require('./animations/LottieWalkthrough.json'),
   ),
-  makeExample('Motion Corpse', () =>
-    require('./animations/MotionCorpse-Jrcanest.json'),
-  ),
   makeExample('Pin Jump', () => require('./animations/PinJump.json')),
   makeExample('Twitter Heart', () => require('./animations/TwitterHeart.json')),
   makeExample('Watermelon', () => require('./animations/Watermelon.json')),

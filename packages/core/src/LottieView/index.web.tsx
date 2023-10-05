@@ -28,6 +28,8 @@ const LottieView = forwardRef(
       sources.sourceName?.includes('.lottie') || !!sources.sourceDotLottieURI;
     const lottieSource = sources.sourceDotLottieURI || sources.sourceName;
 
+    console.log('isLottie', isLottie);
+
     const handleEvent = (event) => {
       if (event === 'error') {
         onAnimationFailure?.('error');
@@ -67,7 +69,7 @@ const LottieView = forwardRef(
     if (isLottie) {
       return (
         <DotLottiePlayer
-          lottieRef={playerRef}
+          ref={playerRef}
           src={lottieSource}
           onEvent={handleEvent}
           style={webStyle}

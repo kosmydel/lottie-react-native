@@ -5,6 +5,7 @@
   "engines": {
     "node": "16"
   },
+  "source": "packages/core/src/index",
   "scripts": {
     "setup": "yarn workspace lottie-react-native build",
     "fabric:start:android": "yarn workspace fabric-example android",
