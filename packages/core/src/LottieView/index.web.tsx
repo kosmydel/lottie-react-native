@@ -28,8 +28,6 @@ const LottieView = forwardRef(
       sources.sourceName?.includes('.lottie') || !!sources.sourceDotLottieURI;
     const lottieSource = sources.sourceDotLottieURI || sources.sourceName;
 
-    console.log('isLottie', isLottie);
-
     const handleEvent = (event) => {
       if (event === 'error') {
         onAnimationFailure?.('error');

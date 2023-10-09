@@ -5,6 +5,7 @@ import {
   Animated,
   Button,
   Image,
+  Platform,
   Switch,
   Text,
   TouchableOpacity,
@@ -44,6 +45,10 @@ const LottieAnimatedExample = () => {
     console.log('Animation failure ', message);
   };
 
+  const onAnimationLoop = () => {
+    console.log('Animation looped');
+  };
+
   const onPlayPress = () => {
     if (isPlaying) {
       anim.current?.pause();
@@ -58,6 +63,10 @@ const LottieAnimatedExample = () => {
   const onToggleImperative = () => setImperative(p => !p);
 
   const startImperative = () => {
+    if (Platform.OS === 'web') {
+      console.warn('Imperative API is not supported on web');
+      return;
+    }
     progress.setValue(0);
     Animated.timing(progress, {
       toValue: 1,
@@ -103,6 +112,7 @@ const LottieAnimatedExample = () => {
           hardwareAccelerationAndroid={true}
           onAnimationFailure={onAnimationFailure}
           onAnimationFinish={onAnimationFinish}
+          onAnimationLoop={onAnimationLoop}
           enableMergePathsAndroidForKitKatAndAbove
           renderMode={renderMode}
           resizeMode={'contain'}
