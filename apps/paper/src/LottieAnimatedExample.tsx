@@ -2,7 +2,6 @@ import Slider from '@react-native-community/slider';
 import LottieView, {LottieViewProps} from 'lottie-react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {
-  Alert,
   Animated,
   Button,
   Image,
@@ -65,7 +64,7 @@ const LottieAnimatedExample = () => {
 
   const startImperative = () => {
     if (Platform.OS === 'web') {
-      Alert.alert('Imperative API is not fully supported on web');
+      console.warn('Imperative API is not supported on web');
       return;
     }
     progress.setValue(0);

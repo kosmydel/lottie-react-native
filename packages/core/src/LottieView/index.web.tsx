@@ -67,7 +67,7 @@ const LottieView = forwardRef(
     if (isLottie) {
       return (
         <DotLottiePlayer
-          lottieRef={playerRef}
+          ref={playerRef}
           src={lottieSource}
           onEvent={handleEvent}
           style={webStyle}
