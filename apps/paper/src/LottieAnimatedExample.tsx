@@ -63,10 +63,6 @@ const LottieAnimatedExample = () => {
   const onToggleImperative = () => setImperative(p => !p);
 
   const startImperative = () => {
-    if (Platform.OS === 'web') {
-      console.warn('Imperative API is not supported on web');
-      return;
-    }
     progress.setValue(0);
     Animated.timing(progress, {
       toValue: 1,
