@@ -13,14 +13,12 @@ module.exports = function (api) {
         {
           extensions: ['.tsx', '.ts', '.js', '.json'],
           alias: {
-            react: './node_modules/react',
-            'react-native': './node_modules/react-native-web',
             // For development, we want to alias the library to the source
-            'lottie-react-native': path.join(__dirname, '../..', pak.source),
+            ['lottie-react-native']: path.join(__dirname, '../..', pak.source),
           },
         },
       ],
-      '@babel/plugin-proposal-export-namespace-from',
+      '@babel/plugin-transform-export-namespace-from',
     ],
   };
 };
